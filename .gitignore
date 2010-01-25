@@ -2,3 +2,5 @@
 *.swo
 tmp/
 config/database.yml
+*.sqlite3
+log/*.log

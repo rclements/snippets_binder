@@ -1,0 +1,9 @@
+%html
+  %head
+    %title Snippets Binder
+  %body
+    - if flash[:error]
+      = flash[:error]
+    - if flash[:notice]
+      = flash[:notice]
+    = yield

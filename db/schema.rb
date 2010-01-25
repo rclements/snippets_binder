@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100125173249) do
+ActiveRecord::Schema.define(:version => 20100125193941) do
+
+  create_table "images", :force => true do |t|
+    t.string   "image_file_file_name"
+    t.string   "image_file_content_type"
+    t.integer  "image_file_file_size"
+    t.datetime "image_file_updated_at"
+  end
 
   create_table "snippets", :force => true do |t|
     t.string   "name"

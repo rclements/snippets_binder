@@ -1,12 +1,6 @@
 = error_messages_for(:snippet)
 
-<<<<<<< HEAD:app/views/snippets/edit.html.haml
-- form_for :snippet, @snippet, :url => { :action => "update" }, :html => { :multipart => true, :method => :put } do |s|
-  = s.text_field :name
-  = s.text_area :description
-=======
 - form_for :snippet, @snippet, :url => { :action => "update" }, :html => { :multipart => true, :method => :put } do |form|
   = form.text_field :name
   = form.text_area :description
->>>>>>> work:app/views/snippets/edit.html.haml
   = submit_tag 'Edit'

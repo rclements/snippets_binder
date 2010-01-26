@@ -1,6 +1,7 @@
 class SnippetsController < ApplicationController
   before_filter :load_snippets, :only => [:index]
   before_filter :load_snippet, :only => [:show, :edit, :update, :destroy]
+  before_filter :load_new_snippet, :only => [:new, :create]
 
   protected
   def load_snippets
@@ -11,13 +12,21 @@ class SnippetsController < ApplicationController
     @snippet = Snippet.find(params[:id])
   end
 
+  def load_new_snippet
+    @snippet = Snippet.new(params[:snippet])
+  end
+
   public
   def index
+  end
+
+  def new
   end
 
   def create
     if @snippet.save
       flash[:notice] = "Snippet created successfully."
+      redirect_to @snippet
     else
       flash.now[:error] = "There was a problem saving the snippet."
       render :action => :new
@@ -37,10 +46,10 @@ class SnippetsController < ApplicationController
   def destroy
     if @snippet.destroy
       flash[:notice] = "The snippet was deleted."
-      redirect to '/'
+      redirect_to '/'
     else
       flash.now[:error] = "There was a problem deleting the snippet, dummy."
-      render :aciton => 'show'
+      render :action => 'show'
     end
   end
 

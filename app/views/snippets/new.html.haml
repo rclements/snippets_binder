@@ -1,6 +1,6 @@
 = error_messages_for(:snippet)
 
-- form_for:snippet, @snippet, :url => { :action => "create" }, :html => { :multipart => true, :method => :put } do |form|
+- form_for :snippet, @snippet, :url => snippets_path do |form|
   = form.text_field :name
-  = form.text_field :description
+  = form.text_area :description
   = submit_tag 'Submit'

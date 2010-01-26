@@ -1,5 +1,5 @@
 %ul#navigation
-  %li=link_to "home", :controller => 'snippets', :action => 'index'
+  %li=link_to "home", { :controller => "snippets", :action => "index"}, :class => "active"
   %li
     %a{ :href=>'#'}
       new snippet

@@ -1,0 +1,2 @@
+BoobsBoobsBoobsBoobs!!!!
+= link_to 'Edit', { :action => 'edit', :id => @snippet }

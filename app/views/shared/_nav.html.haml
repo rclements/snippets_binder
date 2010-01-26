@@ -1,7 +1,5 @@
 %ul#navigation
-  %li
-    %a{ :href=>'#'}
-      home
+  %li=link_to "home", :controller => 'snippets', :action => 'index'
   %li
     %a{ :href=>'#'}
       new snippet

@@ -1,0 +1,5 @@
+= error_messages_for(:snippet)
+
+- form_for :snippet, @snippet, :url => { :action => "update" }, :html => { :multipart => true, :method => :put } do |s|
+  = s.text_area :name
+  = submit_tag 'Edit'

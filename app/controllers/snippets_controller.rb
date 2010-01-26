@@ -1,5 +1,5 @@
 class SnippetsController < ApplicationController
-  before_filter :load_snippets
+  before_filter :load_snippets, :only => [:index]
   before_filter :load_snippet, :only => [:show, :edit, :update, :destroy]
 
   protected
@@ -16,8 +16,8 @@ class SnippetsController < ApplicationController
   end
 
   def create
-    if @snippets.save
-      flash[:notice] = "Image created successfully."
+    if @snippet.save
+      flash[:notice] = "Snippet created successfully."
     else
       flash.now[:error] = "There was a problem saving the snippet."
       render :action => :new
@@ -28,16 +28,15 @@ class SnippetsController < ApplicationController
   end
 
   def update
-    if @snippets.update_attributes(params[:string])
+    if @snippet.update_attributes(params[:snippet])
       flash[:notice] = "The snippet was successfully edited."
-      redirect_to :action => 'show', :id => @snippets
+      redirect_to :action => 'show', :id => @snippet
     end
   end
 
   def destroy
-    if @snippets.destroy
+    if @snippet.destroy
       flash[:notice] = "The snippet was deleted."
-
       redirect to '/'
     else
       flash.now[:error] = "There was a problem deleting the snippet, dummy."

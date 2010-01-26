@@ -1,11 +1,15 @@
 html
+  font-family: Helvetica, Arial, sans
+  font-size: 12px
   margin: 0
   padding: 0
-  background: #ccc none top left
+  background: #eee none top left
+a
+  text-decoration: none
 body
   margin: 0
   padding: 0
-  background: #ccc none top left
+  background: #eee none top left
   #wrapper
     margin: 0
     padding: 0
@@ -15,8 +19,37 @@ body
       height: 122px
       width: 100%
       background: #bbb url(/images/header_bg.png) repeat-x top left
+      position: relative
+      border-bottom: 1px solid #bbb
       h1
         margin: 0
-        padding: 0
+        padding: 25px 0 0 20px
         a
+          display: block
+          width: 425px
+          height: 76px
+          background: transparent url(/images/header_logo.png) no-repeat top left
           span
+            display: none
+      #navigation
+        -moz-border-radius: 8px 8px 0 0
+        border-radius: 8px 8px 0 0
+        border-top: 1px solid #999
+        border-left: 1px solid #bbb
+        border-right: 1px solid #bbb
+        background-color: #eee
+        margin: 0 
+        padding: 10px
+        position: absolute
+        right: 20px
+        bottom: -1px
+        width: 250px
+        li
+          display: inline-block
+          list-style-type: none
+          a
+            color: #666
+            padding: 0 10px
+            font-size: 1.2em
+            &:hover
+              color: #222

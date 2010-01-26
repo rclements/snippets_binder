@@ -1,9 +1,17 @@
 %html
   %head
     %title Snippets Binder
+    %link{ :href => "/stylesheets/base.css", :rel => "stylesheet", :type => "text/css" }
   %body
     - if flash[:error]
       = flash[:error]
     - if flash[:notice]
       = flash[:notice]
-    = yield
+    #wrapper
+      #header
+        %h1
+          %a
+            %span
+              snippets_binder by isotope11
+        = render :partial => "shared/nav"
+      = yield

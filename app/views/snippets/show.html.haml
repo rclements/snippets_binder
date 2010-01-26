@@ -1,3 +1,4 @@
 %h2= @snippet.to_s
 = @snippet.description
 = link_to 'Edit', { :action => 'edit', :id => @snippet }
+= link_to 'Delete', { :action => 'destroy', :id => @snippet }, :confirm => 'Are you sure?', :method => :delete

@@ -4,3 +4,4 @@ tmp/
 config/database.yml
 *.sqlite3
 log/*.log
+public/system/**

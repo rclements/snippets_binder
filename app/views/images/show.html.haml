@@ -1,0 +1,4 @@
+= image_tag @image.image_file.url
+= link_to 'Show', { :action => "show", :id => @image }
+= link_to 'Edit', { :action => 'edit', :id => @image }
+= link_to 'Delete', { :action => 'destroy', :id => @image }, :confirm => 'Are you sure?', :method => :delete

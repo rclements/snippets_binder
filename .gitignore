@@ -29,3 +29,8 @@ bundle.js.filelist
 .sass-cache/
 .sass-cache/*
 public/images/tmp
+tmp/
+config/database.yml
+*.sqlite3
+log/*.log
+public/system/**

@@ -1,0 +1,20 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: snippets_binder_development
+  username: root
+  password:
+
+test:
+  adapter: mysql
+  encoding: utf8
+  database: snippets_binder_test
+  username: root
+  password:
+
+production:
+  adapter: mysql
+  encoding: utf8
+  database: snippets_binder_production
+  username: root
+  password: 

@@ -1,5 +1,5 @@
 class SnippetsController < ApplicationController
-  before_filter :load_snippets, :only => [:index]
+  before_filter :load_snippets
   before_filter :load_snippet, :only => [:show, :edit, :update, :destroy]
   before_filter :load_new_snippet, :only => [:new, :create]
 

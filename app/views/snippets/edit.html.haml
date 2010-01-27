@@ -1,6 +1,14 @@
 = error_messages_for(:snippet)
-
-- form_for :snippet, @snippet, :url => { :action => "update" }, :html => { :multipart => true, :method => :put } do |form|
-  = form.text_field :name
-  = form.text_area :description
-  = submit_tag 'Edit'
+= render :partial => "shared/side_nav"
+.form-container
+  - form_for :snippet, @snippet, :url => { :action => "update" }, :html => { :multipart => true, :method => :put } do |form|
+    .main-container
+      %label{ :for => 'name'}
+        Title
+      = form.text_field :name
+      %label{ :for => 'description'}
+        Snippet
+      = form.text_area :description, "class" => 'snippet-box'
+    .submit-container
+      = submit_tag 'Edit'
+.clear

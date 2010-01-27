@@ -38,7 +38,7 @@ body
     #header
       margin: 0
       padding: 0
-      height: 122px
+      height: 114px
       width: 100%
       background: #bbb url(/images/header_bg.png) repeat-x top left
       position: relative
@@ -95,13 +95,42 @@ body
         -webkit-box-shadow: 2px 2px #999
         -moz-box-shadow: 0px 0px 3px #999
         float: left
-        width: 240px
+        width: 20%
         padding: 10px 30px
         li
           list-style-type: none
           font-size: 1.4em
           text-align: center
+          margin: 4px 0
           a
             color: #333
             &:hover
               color: #888
+      .form-container, .snippet-container
+        float: left
+        margin-left: 20px
+        margin-top: 10px
+        width: 60%
+        min-width: 300px
+        .main-container
+          padding: 20px
+          background: #bbb none no-repeat top left
+          -moz-border-radius: 8px 8px 0 8px
+          h2
+            margin: 0 0 10px
+            text-shadow: 0px 1px #eee
+          label
+            display: block
+            margin-top: 5px
+          input
+            display: block
+          .snippet-box
+            width: 98%
+            height: 120px
+        .submit-container
+          -moz-border-radius: 0 0 8px 8px
+          background: #bbb none no-repeat top left
+          float: right
+          width: 80px
+          padding: 5px 5px 10px
+          text-align: center

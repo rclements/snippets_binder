@@ -26,6 +26,7 @@ Rails::Initializer.run do |config|
   config.gem "machinist",         :lib => false, :version => "= 1.0.6"
   config.gem "faker",             :lib => false, :version => "= 0.3.1"
   config.gem "haml"
+  config.gem 'blueprints', :source => 'http://gemcutter.org'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

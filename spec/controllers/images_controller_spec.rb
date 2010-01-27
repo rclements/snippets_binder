@@ -84,7 +84,7 @@ describe ImagesController do
         @new_image_count = Image.count
       end
     end
-     it { response.should redirect_to(image_path(Image.last.id)) }
+     it { response.should redirect_to(image_path) }
 
      it "should create and assign a @image" do
        assigns(:image).should be_a(Image)

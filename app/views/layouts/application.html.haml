@@ -14,8 +14,8 @@
               snippets_binder by isotope11
         = render :partial => "shared/nav"
       -if flash[:error]
-        = flash[:error]
+        .error= flash[:error]
       -if flash[:notice]
-        = flash[:notice]
+        .notice= flash[:notice]
       #content
         = yield

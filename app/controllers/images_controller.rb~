@@ -46,7 +46,7 @@ class ImagesController < ApplicationController
   def destroy
     if @image.destroy
       flash[:notice] = "The image was deleted."
-      redirect_to images_path
+      redirect_to 'image_index'
     else
       flash.now[:error] = "There was a problem deleting the image, dummy."
       render :action => 'show'

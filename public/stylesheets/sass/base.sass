@@ -6,6 +6,28 @@ html
   background: #eee none top left
 a
   text-decoration: none
+h2
+  color: #323232
+  font-size: 2.7em
+  margin: 20px
+  text-shadow: 0px 2px #fff
+.error
+  background: #FFd5d2 none repeat scroll 0 0
+  border-bottom: 1px solid #800
+  border-top: 1px solid #FFF
+  color: #800
+  margin:  0
+  padding: 1em
+  text-align: center
+.notice
+  background: #FFF3C5 none repeat scroll 0 0
+  border-bottom: 1px solid #FFCC00
+  border-top: 1px solid #FFF
+  color: #6B5E2B
+  margin:  0
+  padding: 1em
+  text-align: center
+  
 body
   margin: 0
   padding: 0
@@ -16,7 +38,7 @@ body
     #header
       margin: 0
       padding: 0
-      height: 122px
+      height: 114px
       width: 100%
       background: #bbb url(/images/header_bg.png) repeat-x top left
       position: relative
@@ -42,7 +64,7 @@ body
         padding: 10px
         position: absolute
         right: 20px
-        bottom: -1px
+        bottom: -2px
         width: 250px
         li
           display: inline-block
@@ -60,3 +82,55 @@ body
               border-color: #888 #999 #BBB
               border-width: 1px
               border-style: solid
+    #content
+      margin: 0
+      padding: 20px 0
+      border-top: 1px solid #fff
+      .snippet-lister
+        background: #f2f2f2 none no-repeat top left 
+        border-right: 1px solid #fff
+        border-top: 1px solid #fff
+        border-bottom: 1px solid #fff
+        box-shadow: 2px 2px #999
+        -webkit-box-shadow: 2px 2px #999
+        -moz-box-shadow: 0px 0px 3px #999
+        float: left
+        width: 20%
+        padding: 10px 30px
+        li
+          list-style-type: none
+          font-size: 1.4em
+          text-align: center
+          margin: 4px 0
+          a
+            color: #333
+            &:hover
+              color: #888
+      .form-container, .snippet-container
+        float: left
+        margin-left: 20px
+        margin-top: 10px
+        width: 60%
+        min-width: 300px
+        .main-container
+          padding: 20px
+          background: #bbb none no-repeat top left
+          -moz-border-radius: 8px 8px 0 8px
+          h2
+            margin: 0 0 10px
+            text-shadow: 0px 1px #eee
+          label
+            display: block
+            margin-top: 5px
+          input
+            display: block
+          .snippet-box
+            width: 98%
+            height: 120px
+        .submit-container
+          -moz-border-radius: 0 0 8px 8px
+          background: #bbb none no-repeat top left
+          float: right
+          width: 80px
+          padding: 5px 5px 10px
+          text-align: center

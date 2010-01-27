@@ -40,13 +40,16 @@ class SnippetsController < ApplicationController
     if @snippet.update_attributes(params[:snippet])
       flash[:notice] = "The snippet was successfully edited."
       redirect_to :action => 'show', :id => @snippet
+    else
+      flash.now[:notice] = "There was a problem updating the snippet."
+      render :action => 'edit'
     end
   end
 
   def destroy
     if @snippet.destroy
       flash[:notice] = "The snippet was deleted."
-      redirect_to '/'
+      redirect_to snippets_path
     else
       flash.now[:error] = "There was a problem deleting the snippet, dummy."
       render :action => 'show'

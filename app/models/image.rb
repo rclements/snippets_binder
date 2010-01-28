@@ -7,6 +7,8 @@ default_scope :conditions => {:deleted_at => nil}
   def destroy
     self.update_attribute(:deleted_at, Time.zone.now)
   end
+
+  validates_presence_of :image_file_file_name
                
   def deleted?
     !!self.deleted_at

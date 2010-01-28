@@ -44,18 +44,23 @@ describe SnippetsController do
       end
 
       describe "with valid parameters" do
-        before(:each) do
-          post :create, { :snippet => { :name => "foo", :description => "bar" } }
-          @new_snippet_count = Snippet.count
-        end
 
-        it { response.should redirect_to(snippet_path(Snippet.last.id)) }
+        it "should redirect to the snippet path" do 
+          post :create, { :snippet => { :name => "foo", :description => "bar" } }
+          response.should redirect_to(snippet_path(Snippet.last.id))
+        end
 
         it "should create and assign a @snippet" do
           assigns(:snippet).should be_a(Snippet)
           assigns(:snippet).id.should_not be_nil
-          @new_snippet_count.should == @old_snippet_count + 1
         end
+
+        it 'should change the snippet count by 1' do
+           lambda do
+            post :create, { :snippet => { :name => "foo", :description => "bar" } }
+           end.should change(Snippet, :count).by(1)
+        end
+
       end
 
       describe "with invalid parameters" do

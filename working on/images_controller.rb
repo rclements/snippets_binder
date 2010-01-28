@@ -34,6 +34,12 @@ class ImagesController < ApplicationController
     end
   end
 
+  def save_upload(upload)
+    self.original_filename = sanitize_file_name(upload.original_filename)
+    self.new_filename = unique_filename
+    File.open(absolute_path, "wb") { |f| f.write(upload.read) }
+  end
+
   def save_file
     if params[:image] != nil
       image = Image.new
@@ -48,9 +54,6 @@ class ImagesController < ApplicationController
     if @image.update_attributes(params[:image])
       flash[:notice] = "The image was successfully edited."
       redirect_to :action => 'show', :id => @image
-    else
-      flash.now[:notice] = "There was a problem updating the image."
-      render :action => 'edit'
     end
   end
 
@@ -66,4 +69,17 @@ class ImagesController < ApplicationController
 
   def show
   end
+
+  private
+    def absolute_path
+      File.join(Rails.root, 'public/system/image_files', self.new_filename)
+    end
+
+    def sanitize_filename(filename)
+      File.basename(filename).gsub(/[^\w\.\_]/,'_')
+    end
+
+    def unique_filename
+      Time.now.strftime("%m%d%Y%H%M%S").to_s + "-#{self.original_filename}"
+    end
 end

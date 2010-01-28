@@ -18,29 +18,6 @@ describe ImagesController do
 
   end
 
-  describe "PUTing to #update" do
-    before(:each) do
-      build :image
-    end
-
-    describe "successfully" do
-      before(:each) do
-        put :update, { :id => @image.id, :image => {:image_file_file_name => 'woooo.jpg'} }
-      end
-
-      it { response.should redirect_to(image_path(@image))}
-    end
-
-    describe "unsuccessfully" do
-      before(:each) do
-        put :update, { :id => @image.id, :image => {:image_file_file_name => nil} }
-      end
-
-      it { response.should render_template("images/edit") }
-    end
-  end
-
-
   describe "hitting #show with an id" do
     before(:each) do
       build :image
@@ -127,6 +104,12 @@ describe ImagesController do
 
       image = Image.new
 
+      image.save
+
+  #    image.original_filename.should == "test.jpg"
+
+    #  iamge.new_filename.should =~ /\d{2}\d{2}\d{4}\d{2}\d{2}\d{2}-test.jpg/
+              
   #    File.exist?("#{Rails.root}/public/system/image_files/#{image.new_filename}").should == true
    #   File.open("#{Rails.root}/public/system/image_files/#{image.new_filename}", "r") { |f| f.read.should == uploaded_file.read}
     end

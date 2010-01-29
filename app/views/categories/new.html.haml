@@ -1,0 +1,10 @@
+= error_messages_for(:category)
+.form-container
+  - form_for :category, @category, :url => categories_path do |form|
+    .main-container
+      %label{ :for => 'name'}
+        Title
+      = form.text_field :name
+      .submit-container
+      = submit_tag 'Submit'
+.clear

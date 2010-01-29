@@ -1,0 +1,8 @@
+.category-container
+  .main-container
+    %h2= @category.to_s
+    = @category.name
+  .submit-container
+    = link_to 'Edit', { :action => 'edit', :id => @category }
+    
+    = link_to 'Delete', { :action => 'destroy', :id => @category }, :confirm => 'Are you sure?', :method => :delete

@@ -1,0 +1,11 @@
+= error_messages_for(:category)
+.form-container
+  - form_for :category, @category, :url => { :action => "update" }, :html => { :multipart => true, :method => :put } do |form|
+    .main-container
+      %label{ :for => 'name'}
+        Title
+      = form.text_field :name
+      %label{ :for => 'description'}
+    .submit-container
+      = submit_tag 'Edit'
+.clear

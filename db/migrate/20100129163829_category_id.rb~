@@ -1,0 +1,9 @@
+class CategoryId < ActiveRecord::Migration
+  def self.up
+    add_column :category, :category_id, :integer
+  end
+
+  def self.down
+    remove_column :category_id
+  end
+end

@@ -2,5 +2,5 @@
   %li=link_to "home", { :controller => "snippets", :action => "index"}, :class => "active"
   %li=link_to "new snippet", { :controller => "snippets", :action => "new"}
   %li
-    %a{ :href=>'#'}
-      categories
+  %a{ :href=>'#'}
+  %li=link_to "categories", { :controller => "categories", :action => "index"}

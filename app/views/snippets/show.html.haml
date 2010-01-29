@@ -2,7 +2,8 @@
 .snippet-container
   .main-container
     %h2= @snippet.to_s
-    = @snippet.description
+    %textarea.code-container{ :readonly => "readonly" }
+      = @snippet.description
   .submit-container
     = link_to 'Edit', { :action => 'edit', :id => @snippet }
     |

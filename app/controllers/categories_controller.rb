@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_filter :load_category
+  before_filter :load_categories, :only => [:index]
   before_filter :load_category, :only => [:show, :edit, :update, :destroy]
   before_filter :load_new_category, :only => [:new, :create]
 
@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
   end
 
   def load_category
-    @category = Category.find(params[:name])
+    @category = Category.find(params[:id])
   end
 
   def load_new_category
@@ -33,14 +33,25 @@ class CategoriesController < ApplicationController
       render :action => :new
     end
   end
-
+  
   def edit
   end
+
+  def update
+    if @category.update_attributes(params[:category])
+      flash[:notice] = "The category was successfully edited."
+      redirect_to :action => 'show', :id => @category
+    else
+      flash.now[:notice] = "There was a problem updating the category."
+      render :action => 'edit'
+    end
+  end
+
 
   def destroy
     if @category.destroy
       flash[:notice] = "The category was deleted."
-      redirect_to category_path
+      redirect_to categories_path
     else
       flash.now[:error] = "There was a problem deleting the category."
       render :action => 'show'

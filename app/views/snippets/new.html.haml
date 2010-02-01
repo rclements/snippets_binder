@@ -10,7 +10,7 @@
         Snippet
       = form.text_area :description, "class" => 'snippet-box'
       %label{ :for => 'categories'}
-     / = form.select :category, :category_id, :category.find(:all).collect { |c| [c.category, c.category_id] }
+      / = form.select :category, :category_id, :category.find(:all).collect { |c| [c.category, c.category_id] }
       
     .submit-container
       = submit_tag 'Submit'

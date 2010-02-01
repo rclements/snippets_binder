@@ -2,10 +2,15 @@ class CategoriesController < ApplicationController
   before_filter :load_categories, :only => [:index]
   before_filter :load_category, :only => [:show, :edit, :update, :destroy]
   before_filter :load_new_category, :only => [:new, :create]
+  before_filter :load_subcategories, :only => [:show]
 
   protected
   def load_categories
     @categories = Category.all
+  end
+
+  def load_subcategories
+    @subcategories = @category.subcategories
   end
 
   def load_category

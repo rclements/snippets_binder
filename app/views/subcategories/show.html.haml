@@ -1,0 +1,9 @@
+.subcategory-container
+  .main-container
+    %h2= @subcategory.to_s
+    = @subcategory.name
+
+  .submit-container
+    = link_to 'Edit', edit_subcategory_path(@subcategory)
+    
+    = link_to 'Delete', subcategory_path(@subcategory), :confirm => 'Are you sure?', :method => :delete

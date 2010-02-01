@@ -3,6 +3,15 @@
     %h2= @category.to_s
     = @category.name
   .submit-container
-    = link_to 'Edit', { :action => 'edit', :id => @category }
+    = link_to 'Edit', edit_category_path(@category)
     
-    = link_to 'Delete', { :action => 'destroy', :id => @category }, :confirm => 'Are you sure?', :method => :delete
+    = link_to 'Delete', category_path(@category), :confirm => 'Are you sure?', :method => :delete
+
+%h2 Subcategories
+
+%ul.subcategories
+  - @subcategories.each do |subcategory|
+    %li.subcategory= link_to(subcategory.to_s, subcategory_path(subcategory))
+
+
+%li= link_to "New Subcategory", new_subcategory_path(:category_id => @category.id)

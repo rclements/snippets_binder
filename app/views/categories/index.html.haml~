@@ -4,4 +4,4 @@
   - @categories.each do |category|
     %li.category= link_to(category.to_s, category_path(category))
     
-%li= link_to "New Category", { :controller => "categories", :action => "new"}
+%li=link_to "New Category", { :controller => "categories", :action => "new"}

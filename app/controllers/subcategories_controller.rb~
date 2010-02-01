@@ -1,5 +1,5 @@
 class SubcategoriesController < ApplicationController
-  before_filter :load_subcategories, :only => [:index, :show]
+  before_filter :load_subcategories, :only => [:index]
   before_filter :load_subcategory, :only => [:show, :edit, :update, :destroy]
   before_filter :load_new_subcategory, :only => [:new, :create]
 
@@ -13,8 +13,7 @@ class SubcategoriesController < ApplicationController
   end
 
   def load_new_subcategory
-    @subcategory = Subcategory.new(params[:subcategory]) 
-    @subcategory.category_id = params[:category_id]
+    @subcategory = Subcategory.find(params[:subcategory]) 
   end
 
   public
@@ -28,7 +27,7 @@ class SubcategoriesController < ApplicationController
   def create
     if @subcategory.save
       flash[:notice] = "Subcategory created successfully."
-      redirect_to @subcategory.category
+      redirect_to @subcategory
     else
       flash.now[:error] = "There was a problem saving the subcategory."
       render :action => :new
@@ -39,26 +38,24 @@ class SubcategoriesController < ApplicationController
   end
 
   def update
-    if  @subcategory.update_attributes(params[:subcategory])
-      flash[:notice] = "The subcategory was successfully edited."
-      redirect_to :action => 'show', :id => @subcategory
+    if @subcategory.if @category.update_attributes(params[:category])
+      flash[:notice] = "The category was successfully edited."
+      redirect_to :action => 'show', :id => @category
     else
-     flash.now[:notice] = "There was a problem updating the subcategory."
+     flash.now[:notice] = "There was a problem updating the category."
      render :action => 'edit'
     end
   end
 
 
   def destroy
-    @category = @subcategory.category
     if @subcategory.destroy
       flash[:notice] = "The subcategory was deleted."
-      redirect_to @category
+      redirect_to subcategory_path
     else
       flash.now[:error] = "There was a problem deleting the subcategory."
       render :action => 'show'
     end
-  end
 
   def show
   end

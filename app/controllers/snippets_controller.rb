@@ -4,6 +4,7 @@ class SnippetsController < ApplicationController
   before_filter :load_new_snippet, :only => [:new, :create]
   before_filter :load_categories, :only => [:show, :new]
   before_filter :load_subcategories, :only => [:show, :new]
+  before_filter :load_images, :only => [:show, :new]
 
   protected
   def load_snippets
@@ -30,6 +31,9 @@ class SnippetsController < ApplicationController
     @category = Category.find(params[:id])
   end
 
+  def load_images
+    @images = @snippet.images
+  end
 
   public
   def index
@@ -39,6 +43,10 @@ class SnippetsController < ApplicationController
   end
 
   def create
+    if params[:image].present?
+      @snippet.images.build(:image_file => params[:image])
+    end
+
     if @snippet.save
       flash[:notice] = "Snippet created successfully."
       redirect_to @snippet

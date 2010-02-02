@@ -11,6 +11,8 @@
       = form.text_area :description, "class" => 'snippet-box'
       = select_tag "categories", options_for_select(@categories.collect { |p| [p.name, p.id] })
 
+      = select_tag "subcategories", options_for_select(@subcategories.collect { |s| [s.name, s.id] })
+
       .submit-container
         = submit_tag 'Submit'
 .clear

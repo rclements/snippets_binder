@@ -60,6 +60,9 @@ class SnippetsController < ApplicationController
   end
 
   def update
+    if params[:image].present?
+      @snippet.images.build(:image_file => params[:image])
+    end
     if @snippet.update_attributes(params[:snippet])
       flash[:notice] = "The snippet was successfully edited."
       redirect_to :action => 'show', :id => @snippet
@@ -70,6 +73,9 @@ class SnippetsController < ApplicationController
   end
 
   def destroy
+    if @snippet.images.destroy
+      flash[:notice] = "The image was deleted."
+    end
     if @snippet.destroy
       flash[:notice] = "The snippet was deleted."
       redirect_to snippets_path

@@ -11,6 +11,10 @@ db/development.sqlite3
 db/*sqlite
 *.swp
 *.swo
+*~
+*.haml~
+*.sass~
+*.rb~
 *.swn
 /public/javascripts/all.js
 /public/system/

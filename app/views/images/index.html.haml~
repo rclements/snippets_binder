@@ -1,6 +1,0 @@
-%h2 Images  
-
-
-%ul.images
-  - @images.each do |image|
-    %li.image= link_to(image_id.to_s, image_path(image))

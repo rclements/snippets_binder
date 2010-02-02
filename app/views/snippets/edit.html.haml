@@ -9,6 +9,9 @@
       %label{ :for => 'description'}
         Snippet
       = form.text_area :description, "class" => 'snippet-box'
+
+      = file_field_tag "image"
+      
     .submit-container
       = submit_tag 'Edit'
 .clear

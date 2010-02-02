@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100129225527) do
+ActiveRecord::Schema.define(:version => 20100202164527) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(:version => 20100129225527) do
     t.datetime "updated_at"
     t.text     "description"
     t.datetime "deleted_at"
+    t.integer  "category_id"
+    t.integer  "subcategory_id"
   end
 
   create_table "subcategories", :force => true do |t|

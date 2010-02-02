@@ -8,4 +8,9 @@
     = link_to 'Edit', { :action => 'edit', :id => @snippet }
     |
     = link_to 'Delete', { :action => 'destroy', :id => @snippet }, :confirm => 'Are you sure?', :method => :delete
+
+  - @images.each do |image|
+    = image_tag image.image_file.url
+    = link_to 'Delete', { :action => 'destroy', :id => image.id }, :confirm => 'Are you sure?', :method => :delete
+
 .clear  

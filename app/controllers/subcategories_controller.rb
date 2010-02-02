@@ -2,6 +2,7 @@ class SubcategoriesController < ApplicationController
   before_filter :load_subcategories, :only => [:index, :show]
   before_filter :load_subcategory, :only => [:show, :edit, :update, :destroy]
   before_filter :load_new_subcategory, :only => [:new, :create]
+  before_filter :load_snippets, :only => [:show]
 
   protected
   def load_subcategories
@@ -15,6 +16,10 @@ class SubcategoriesController < ApplicationController
   def load_new_subcategory
     @subcategory = Subcategory.new(params[:subcategory]) 
     @subcategory.category_id = params[:category_id]
+  end
+
+  def load_snippets
+    @snippets = Snippet.all
   end
 
   public

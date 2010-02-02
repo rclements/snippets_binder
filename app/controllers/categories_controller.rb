@@ -3,7 +3,8 @@ class CategoriesController < ApplicationController
   before_filter :load_category, :only => [:show, :edit, :update, :destroy]
   before_filter :load_new_category, :only => [:new, :create]
   before_filter :load_subcategories, :only => [:show]
-
+  before_filter :load_snippets, :only => [:show]
+  
   protected
   def load_categories
     @categories = Category.all
@@ -19,6 +20,10 @@ class CategoriesController < ApplicationController
 
   def load_new_category
     @category = Category.new(params[:category])
+  end
+
+  def load_snippets
+    @snippets = Snippet.all
   end
 
   public

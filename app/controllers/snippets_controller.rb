@@ -3,7 +3,6 @@ class SnippetsController < ApplicationController
   before_filter :load_snippet, :only => [:show, :edit, :update, :destroy]
   before_filter :load_new_snippet, :only => [:new, :create]
   before_filter :load_categories, :only => [:show, :new]
-  before_filter :load_subcategories, :only => [:show, :new]
   before_filter :load_images, :only => [:show, :new]
 
   protected
@@ -21,10 +20,6 @@ class SnippetsController < ApplicationController
 
   def load_categories
     @categories = Category.all
-  end
-
-  def load_subcategories
-    @subcategories = Subcategory.all 
   end
 
   def load_category
@@ -54,6 +49,12 @@ class SnippetsController < ApplicationController
       flash.now[:error] = "There was a problem saving the snippet."
       render :action => :new
     end
+  end
+
+  def fetch_subcategories
+    category = Category.find(params[:category_id])
+    @subcategories = category.subcategories
+    render :layout => false
   end
 
   def edit

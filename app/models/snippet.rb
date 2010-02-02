@@ -1,6 +1,7 @@
 class Snippet < ActiveRecord::Base
   has_many :images
   belongs_to :subcategory
+  belongs_to :category
   validates_presence_of :name
 
   def to_s

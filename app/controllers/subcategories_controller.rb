@@ -19,7 +19,7 @@ class SubcategoriesController < ApplicationController
   end
 
   def load_snippets
-    @snippets = Snippet.all
+    @snippets = @subcategory.snippets.all
   end
 
   public

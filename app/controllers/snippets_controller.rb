@@ -2,8 +2,8 @@ class SnippetsController < ApplicationController
   before_filter :load_snippets
   before_filter :load_snippet, :only => [:show, :edit, :update, :destroy]
   before_filter :load_new_snippet, :only => [:new, :create]
-  before_filter :load_categories, :only => [:show]
-  before_filter :load_subcategories, :only => [:show]
+  before_filter :load_categories, :only => [:show, :new]
+  #before_filter :load_subcategories, :only => [:show]
   before_filter :load_category, :only => [:show]
 
   protected
@@ -20,12 +20,12 @@ class SnippetsController < ApplicationController
   end
 
   def load_categories
-    @categories = Categories.all
+    @categories = Category.all
   end
 
-  def load_subcategories
-    @subcategories = @category.subcategories
-  end
+  #def load_subcategories
+  #  @subcategories = @category.subcategories
+  #end
 
   def load_category
     @category = Category.find(params[:id])

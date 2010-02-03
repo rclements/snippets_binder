@@ -1,9 +1,9 @@
 class SnippetsController < ApplicationController
   before_filter :load_snippets
-  before_filter :load_snippet, :only => [:show, :edit, :update, :destroy]
+  before_filter :load_snippet, :only => [:show, :edit, :update, :destroy, :destroy_image]
   before_filter :load_new_snippet, :only => [:new, :create]
   before_filter :load_categories, :only => [:show, :new]
-  before_filter :load_images, :only => [:show, :new, :destroy]
+  before_filter :load_images, :only => [:show, :new]
 
   protected
   def load_snippets
@@ -73,10 +73,20 @@ class SnippetsController < ApplicationController
     end
   end
 
-  def destroy
-    if @snippet.images.destroy
-      flash[:notice] = "The image was deleted."
+  def destroy_image
+    if params[:image_id].present?
+      @image = Image.find(params[:image_id])
     end
+    if @image.destroy
+      flash[:notice] = "The image was deleted."
+      redirect_to @snippet
+    else
+      flash.now[:error] = "There was a problem deleting the image."
+      render :action => 'show'
+    end
+  end
+
+  def destroy
     if @snippet.destroy
       flash[:notice] = "The snippet was deleted."
       redirect_to snippets_path

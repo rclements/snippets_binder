@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
-  map.resources :snippets, :collection => [:fetch_subcategories]
+  map.resources :snippets, :member => [:destroy_image], :collection => [:fetch_subcategories]
   map.resources :categories
   map.resources :subcategories
 

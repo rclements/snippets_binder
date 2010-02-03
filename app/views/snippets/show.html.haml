@@ -11,6 +11,6 @@
 
   - @images.each do |image|
     = image_tag image.image_file.url
-    = link_to 'Delete', { :action => 'destroy', :id => image.id }, :confirm => 'Are you sure?', :method => :delete
+    = link_to 'Delete', { :action => 'destroy_image', :image_id => image.id }, :confirm => 'Are you sure?', :method => :delete
 
 .clear  

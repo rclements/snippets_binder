@@ -10,7 +10,7 @@
       %label{ :for => 'description'}
         Snippet
       = form.text_area :description, "class" => 'snippet-box'
-      = form.select "category_id", options_for_select(@categories.collect { |p| [p.name, p.id] })
+      = form.select "category_id", options_for_select(@categories.collect { |p| [p.name, p.id] }), {:include_blank=>true}
 
       = observe_field :snippet_category_id, :url => fetch_subcategories_snippets_path, :update => :snippet_subcategory_id, :with => " 'category_id='  + $('snippet_category_id').value"
 

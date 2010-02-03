@@ -3,7 +3,7 @@ class SnippetsController < ApplicationController
   before_filter :load_snippet, :only => [:show, :edit, :update, :destroy]
   before_filter :load_new_snippet, :only => [:new, :create]
   before_filter :load_categories, :only => [:show, :new]
-  before_filter :load_images, :only => [:show, :new]
+  before_filter :load_images, :only => [:show, :new, :destroy]
 
   protected
   def load_snippets
@@ -29,7 +29,7 @@ class SnippetsController < ApplicationController
   def load_images
     @images = @snippet.images
   end
-
+  
   public
   def index
   end

@@ -17,4 +17,5 @@ describe Snippet do
     @snippet = Snippet.create(@valid_attributes)
     @snippet.to_s.should == "test snippet"
   end
-end
+
+end 

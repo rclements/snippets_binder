@@ -4,7 +4,7 @@ describe Image do
   before(:each) do
     Image.delete_all
     @valid_attributes = 
-      { :image_file => "bing"
+      { :image_file_file_name => "bing"
     }
     @image = Image.create!(@valid_attributes)
   end
@@ -14,7 +14,7 @@ describe Image do
   end
 
   describe "on call to delete" do
-    before(:each) do
+    before(:all) do
       @image.delete
     end
 

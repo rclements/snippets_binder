@@ -81,6 +81,7 @@ describe SnippetsController do
       end
     end
 
+
     describe "DELETEing to #destroy_image" do
       before(:each) do
         build :image
@@ -96,10 +97,12 @@ describe SnippetsController do
           delete :destroy, { :id => @image_id.id }
         end
 
-        it { response.should redirect_to(snippets_path)}
+        it { response.should redirect_to(snippet_path(@snippet)) }
+
       end
 
-      describe "unsuccessfully" do
+
+      describe "unsuccessfuly" do
         before(:each) do
           class Image < ActiveRecord::Base
             def destroy
@@ -111,8 +114,9 @@ describe SnippetsController do
 
         it { response.should render_template("snippets/show") }
       end
-    end
 
+    end
+    
     describe "DELETEing to #destroy" do
       before(:each) do
         build :snippet

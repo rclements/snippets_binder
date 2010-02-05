@@ -48,7 +48,7 @@ describe SubcategoriesController do
       it "should redirect to the subcategory path" do
         post :create, { :subcategory => { :name => "foo" } }
         response.should redirect_to(subcategory_path(Subcategory.last.id))
-      end
+      end 
     end
                                   
                         
@@ -71,7 +71,9 @@ describe SubcategoriesController do
 
   describe "DELETEing to #destroy" do
     before(:each) do
-      build :subcategory
+      cat = build :category
+      sub = build :subcategory
+      sub.update_attribute(:category_id, cat.id)
     end
 
     describe "successfully" do
@@ -84,7 +86,7 @@ describe SubcategoriesController do
         delete :destroy, { :id => @subcategory.id }
       end
 
-      it { response.should redirect_to(subcategory_path(@category)) }
+      it { response.should redirect_to(category_path(@category)) }
     end
                           
     describe "unsuccessfully" do
@@ -108,7 +110,7 @@ describe SubcategoriesController do
 
     describe "successfully" do
       before(:each) do
-        put :update, { :id => @subcategory.id, :category => {:name => "foo" } }
+        put :update, { :id => @subcategory.id, :subcategory => {:name => "foo" } }
       end
                                       
       it { response.should redirect_to(subcategory_path(@subcategory)) }
@@ -116,7 +118,7 @@ describe SubcategoriesController do
                           
     describe "unsuccessfully" do
       before(:each) do
-        put :update, { :id => @subcategory.id, :category => { :name => nil } }
+        put :update, { :id => @subcategory.id, :subcategory => { :name => nil } }
       end
 
       it { response.should render_template("subcategories/edit") }

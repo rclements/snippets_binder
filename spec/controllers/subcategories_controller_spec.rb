@@ -84,7 +84,7 @@ describe SubcategoriesController do
         delete :destroy, { :id => @subcategory.id }
       end
 
-      it { response.should redirect_to(categories_path) }
+      it { response.should redirect_to(subcategory_path(@category)) }
     end
                           
     describe "unsuccessfully" do

@@ -11,6 +11,7 @@ describe SnippetsController do
     it "should assign @snippets as an array" do
       assigns(:snippets).should be_a(Array)
     end
+
   end
 
   describe "hitting #show with an id" do
@@ -77,6 +78,38 @@ describe SnippetsController do
           @new_snippet_count.should == @old_snippet_count
           assigns(:snippet).errors.to_a.should_not be_empty
         end
+      end
+    end
+
+    describe "DELETEing to #destroy_image" do
+      before(:each) do
+        build :image
+      end
+
+      describe "successfully" do
+        before(:each) do
+          class Image < ActiveRecord::Base
+            def destroy
+              super
+            end
+          end
+          delete :destroy, { :id => @image_id.id }
+        end
+
+        it { response.should redirect_to(snippets_path)}
+      end
+
+      describe "unsuccessfully" do
+        before(:each) do
+          class Image < ActiveRecord::Base
+            def destroy
+              false
+            end
+          end
+          delete :destroy, { :id => @image_id.id }
+        end
+
+        it { response.should render_template("snippets/show") }
       end
     end
 

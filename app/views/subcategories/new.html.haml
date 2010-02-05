@@ -3,9 +3,9 @@
   - form_for :subcategory, @subcategory, :url => subcategories_path do |form|
     .main-container
       %label{ :for => 'name'}
-        Title
+        Subcategory Name
       = form.text_field :name
       = hidden_field_tag :category_id, params[:category_id]
-      .submit-container
+    .submit-container
       = submit_tag 'Submit'
 .clear

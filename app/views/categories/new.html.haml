@@ -3,8 +3,8 @@
   - form_for :category, @category, :url => categories_path do |form|
     .main-container
       %label{ :for => 'name'}
-        Title
+        Category Name
       = form.text_field :name
-      .submit-container
+    .submit-container
       = submit_tag 'Submit'
 .clear

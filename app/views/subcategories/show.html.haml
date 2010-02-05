@@ -1,13 +1,10 @@
 .subcategory-container
   .main-container
-    %h2= @subcategory.to_s
-    = @subcategory.name
-
-  .submit-container
-    = link_to 'Edit', edit_subcategory_path(@subcategory)
-    
-    = link_to 'Delete', subcategory_path(@subcategory), :confirm => 'Are you sure?', :method => :delete
-
-%br  
+    %h2
+      = @subcategory.to_s
+      = link_to image_tag("edit.png", :border=>0), edit_subcategory_path(@subcategory)
+      = link_to image_tag("delete.png", :border=>0), subcategory_path(@subcategory), :confirm => 'Are you sure?', :method => :delete
+%h2 Select a Snippet
+%ul.snippet-lister
   - @snippets.each do |snippet|
     %li.snippet= link_to(snippet.to_s, snippet_path(snippet))

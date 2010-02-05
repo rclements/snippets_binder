@@ -1,4 +1,4 @@
 %ul#navigation
-  %li=link_to "home", { :controller => "snippets", :action => "index"}, :class => "active"
-  %li=link_to "new snippet", { :controller => "snippets", :action => "new"}
-  %li=link_to "categories", { :controller => "categories", :action => "index"}
+  %li=link_to "home", { :controller => "pages", :action => "home"}, :class => "active"
+  %li=link_to "find a snippet", { :controller => "categories", :action => "index"}
+  %li=link_to "create a snippet", { :controller => "snippets", :action => "new"}

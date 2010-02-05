@@ -1,17 +1,12 @@
 .category-container
   .main-container
-    %h2= @category.to_s
-    = @category.name
-  .submit-container
-    = link_to 'Edit', edit_category_path(@category)
-    
-    = link_to 'Delete', category_path(@category), :confirm => 'Are you sure?', :method => :delete
+    %h2
+      = @category.to_s
+      = link_to image_tag("edit.png", :border=>0), edit_category_path(@category)
+      = link_to image_tag("delete.png", :border=>0), category_path(@category), :confirm => 'Are you sure?', :method => :delete
 
-%h2 Subcategories
-
-%ul.subcategories
+%h2 Select a Subcategory
+%ul.snippet-lister
   - @subcategories.each do |subcategory|
     %li.subcategory= link_to(subcategory.to_s, subcategory_path(subcategory))
-
-
-%li= link_to "New Subcategory", new_subcategory_path(:category_id => @category.id)
+  %li.add-new= link_to "New Subcategory", new_subcategory_path(:category_id => @category.id)

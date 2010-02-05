@@ -10,14 +10,17 @@
       %label{ :for => 'description'}
         Snippet
       = form.text_area :description, "class" => 'snippet-box'
+      %label{ :for => 'category'}
+        Category and Subcategory
       = form.select "category_id", options_for_select(@categories.collect { |p| [p.name, p.id] }), {:include_blank=>true}
 
       = observe_field :snippet_category_id, :url => fetch_subcategories_snippets_path, :update => :snippet_subcategory_id, :with => " 'category_id='  + $('snippet_category_id').value"
 
       = form.select "subcategory_id", options_for_select([])
-      
+      %label{ :for => 'image'}
+        Upload an Image
       = file_field_tag "image"
       
-      .submit-container
-        = submit_tag 'Submit'
+    .submit-container
+      = submit_tag 'Submit'
 .clear

@@ -61,6 +61,7 @@ body
             display: none
       #navigation
         -moz-border-radius: 8px 8px 0 0
+        -webkit-border-radius: 8px 8px 0 0
         border-radius: 8px 8px 0 0
         border-top: 1px solid #999
         border-left: 1px solid #bbb
@@ -84,10 +85,27 @@ body
             &.active
               background: #aaa
               -moz-border-radius: 4px
+              -webkit-border-radius: 4px
+              border-radius: 4px
               color: #eee
               border-color: #888 #999 #BBB
               border-width: 1px
               border-style: solid
+      .utility-nav
+        background: #eee
+        position: absolute
+        right: 20px
+        top: 20px
+        width: 300px
+        -moz-border-radius: 4px
+        -webkit-border-radius: 4px
+        border-radius: 4px
+        padding: 5px
+        border: 1px solid #aaa
+        li
+          list-style-type: none
+          display: inline-block
+          margin: 0 5px
     #content
       margin: 0
       padding: 20px 0
@@ -127,6 +145,8 @@ body
           padding: 20px
           background: #bbb none no-repeat top left
           -moz-border-radius: 8px 8px 0 8px
+          -webkit-border-radius: 8px 8px 0 8px
+          border-radius: 8px 8px 0 8px
           h2
             margin: 0 0 10px
             text-shadow: 0px 1px #eee
@@ -147,6 +167,8 @@ body
             -webkit-border-radius: 8px
         .submit-container
           -moz-border-radius: 0 0 8px 8px
+          -webkit-border-radius: 0 0 8px 8px
+          border-radius: 0 0 8px 8px
           background: #bbb none no-repeat top left
           float: right
           width: 80px
@@ -154,6 +176,8 @@ body
           text-align: center
         .edit-container
           -moz-border-radius: 0 0 8px 8px
+          -webkit-border-radius: 0 0 8px 8px
+          border-radius: 0 0 8px 8px
           background: #bbb none no-repeat top left
           float: right
           width: 150px

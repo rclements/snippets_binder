@@ -3,6 +3,7 @@ class SnippetsController < ApplicationController
   before_filter :load_snippet, :only => [:show, :edit, :update, :destroy, :destroy_image]
   before_filter :load_new_snippet, :only => [:new, :create]
   before_filter :load_categories, :only => [:show, :new]
+  before_filter :load_category, :only => [:fetch_subcategories]
   before_filter :load_images, :only => [:show, :new]
 
   protected
@@ -52,8 +53,7 @@ class SnippetsController < ApplicationController
   end
 
   def fetch_subcategories
-    category = Category.find(params[:category_id])
-    @subcategories = category.subcategories
+    @subcategories = @category.subcategories
     render :layout => false
   end
 
@@ -79,7 +79,7 @@ class SnippetsController < ApplicationController
     end
     if @image.destroy
       flash[:notice] = "The image was deleted."
-      redirect_to @snippet
+      redirect_to :action => 'show', :id => @snippet
     else
       flash.now[:error] = "There was a problem deleting the image."
       render :action => 'show'

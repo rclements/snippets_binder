@@ -12,12 +12,14 @@
         %h1
           %a{ :href => '/'}
             %span
-              = if current_user
-                = link_to "Edit Profile", edit_user_path(:current)
-                = link_to "Logout", logout_path
-              = link_to "Register", new_user_path
-              = link_to "Login", login_path
               snippets_binder by isotope11
+        %ul.utility-nav
+          -if current_user
+            %li= link_to "Edit Profile", edit_user_path(:current)
+            %li= link_to "Logout", logout_path
+          -else 
+            %li= link_to "Register", new_user_path
+            %li= link_to "Login", login_path
         = render :partial => "shared/nav"
       -if flash[:error]
         .error= flash[:error]

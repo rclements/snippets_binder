@@ -4,9 +4,9 @@
       = @subcategory.to_s
       = link_to image_tag("edit.png", :border=>0), edit_subcategory_path(@subcategory)
       = link_to image_tag("delete.png", :border=>0), subcategory_path(@subcategory), :confirm => 'Are you sure?', :method => :delete
-%h2 Select a Snippet
+%h3 --Select a Snippet--
 %ul.snippet-lister
   - @snippets.each do |snippet|
     %li.snippet= link_to(snippet.to_s, snippet_path(snippet))
-
-  =link_to "Create New Snippet", { :controller => "snippets", :action => "new"}
+= link_to "Create New Snippet", { :controller => "snippets", :action => "new"}
+= will_paginate @snippets

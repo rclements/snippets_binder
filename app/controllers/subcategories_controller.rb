@@ -2,9 +2,10 @@ class SubcategoriesController < ApplicationController
   before_filter :load_subcategories, :only => [:index, :show]
   before_filter :load_subcategory, :only => [:show, :edit, :update, :destroy]
   before_filter :load_new_subcategory, :only => [:new, :create]
-  before_filter :load_snippets, :only => [:show]
+  before_filter :load_snippets, :only => [:show] 
 
   protected
+
   def load_subcategories
     @subcategories = Subcategory.all
   end
@@ -19,7 +20,7 @@ class SubcategoriesController < ApplicationController
   end
 
   def load_snippets
-    @snippets = @subcategory.snippets.all
+    @snippets = @subcategory.snippets.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 10 
   end
 
   public

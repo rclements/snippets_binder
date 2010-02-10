@@ -11,7 +11,8 @@ class Snippet < ActiveRecord::Base
   def to_s
     name
   end
-  
+
+
   def delete
     images.each do |image|
       image.destroy

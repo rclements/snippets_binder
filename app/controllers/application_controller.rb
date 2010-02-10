@@ -2,6 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  before_filter :authenticate, :except => [:login, :logout, :destroy, :index, :new]
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   filter_parameter_logging :password, :password_confirmation
@@ -9,6 +10,14 @@ class ApplicationController < ActionController::Base
   
 
   private
+
+  def authenticate
+    unless current_user
+      flash[:notice] = "You must be logged in first."
+      redirect_to(login_url)
+      return false
+    end
+  end
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

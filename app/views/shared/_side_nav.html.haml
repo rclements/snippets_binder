@@ -1,5 +1,5 @@
-%ul.snippet-lister
-  - @snippets.each do |snippet|
-    %li.snippet= link_to(snippet.to_s, snippet_path(snippet))
-
-
+/
+  %ul.snippet-lister
+    - @snippets.each do |snippet|
+      %li.snippet= link_to(snippet.to_s, snippet_path(snippet))
+  = will_paginate @snippets

@@ -42,7 +42,7 @@ describe UsersController do
     describe "posting to #create" do
       describe "with valid parameters" do
         it "should redirect to the root" do
-          post :create, { :user => { :id => "1", :login => "rclements", :email => "rclements@gmail.com" } }
+          post :create, { :user => { :id => "1", :login => "examplename", :email => "example@gmail.com" } }
           response.should redirect_to(root_url)
         end
       end
@@ -51,14 +51,14 @@ describe UsersController do
     describe "posting to #update" do
       describe "with valid parameters" do
         @valid_parameters = { 'login' => 'jsmith', 'email' => 'john.smith@example.com', 'password' => ' password' }
-        #  User.stub(:update).with(@valid_parameters).and_return(mock_user)
-        #  mock_user.stub(:save).and_return(true)
+        #User.stub(:update).with(@valid_parameters).and_return(mock_user)
+        #mock_user.stub(:save).and_return(true)
       end
 
       it "updates user as @user" do
         post :update, :user => @valid_parameters
         assigns[:user].should equal(mock_user)
-        response.should redirect_to(root_path)
+        response.should redirect_to(root_url)
       end
 
       describe "with invalid parameters" do

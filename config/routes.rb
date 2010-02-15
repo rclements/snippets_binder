@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :thoughts
-
   # sets home page
   map.root :controller => 'pages', :action => 'home'
   
@@ -9,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :snippets, :member => [:destroy_image], :collection => [:fetch_subcategories]
   map.resources :categories
   map.resources :subcategories
+  map.resources :code_blocks
   map.resource :user_session
   map.resources :users
   map.resources :comments
@@ -17,6 +16,4 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-
-
 end

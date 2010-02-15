@@ -21,19 +21,6 @@ describe SnippetsController do
       end
     end
 
-#    describe "hitting #show category with an id" do
- #     before(:each) do
-  #      build :category
-   #     get :show, { :id => @category.id }
-    #  end
-
-    #  it { response.should be_success }
-    #  it { response.should render_template("categories/show") }
-    #  it "should assign @category" do
-    #    assigns(:category).should be_a(Category)
-    #  end
-   # end
-
     describe "hitting #show with an id" do
       before(:each) do
         build :snippet
@@ -69,12 +56,6 @@ describe SnippetsController do
       end
       it "should save the upload image" do
         @image = mock(Image).as_null_object
-
-        # Image.should_receive(:new).and_return(image)
-        # uploaded_file = mock(ActionController::UploadedStringIO).as_null_object
-        # params = { "id" => "1", "image" => uploaded_file }
-        # image.should_receive(:save_upload).with(uploaded_file)
-        # post :save_file, params
       end
 
       it "should be able to save an upload with a unique id" do
@@ -143,18 +124,18 @@ describe SnippetsController do
       describe "successfully" do
         before :each do
           it"should destroy the image" do
-          Image.stub(:find).with('42').and_return(mock_image)
+          Image.stub(:find).with('1').and_return(mock_image)
           mock_image.should_receive(:destroy).and_return(mock_image)
-          post :destroy_image, :image_id => '42', :id => @snippet.id
+          post :destroy_image, :image_id => '1', :id => @snippet.id
           response.should redirect_to(snippet_path(@snippet))
         end
       end
 
       describe "unsuccessfully" do
         before :each do
-          Image.stub(:find).with('42').and_return(mock_image)
+          Image.stub(:find).with('1').and_return(mock_image)
           mock_image.should_receive(:destroy).and_return(false)
-          post :destroy_image, :image_id => '42', :id => @snippet.id 
+          post :destroy_image, :image_id => '1', :id => @snippet.id 
           it { response.should render_template("snippets/show") }
           end
         end
@@ -213,6 +194,28 @@ describe SnippetsController do
 
         it { response.should render_template("snippets/edit") }
       end
+    end
+  
+    describe "posting to #update_image" do
+      before(:each) do
+        build :image
+        build :snippet
+        @snippet.images << @image
+        post :create, { :image => { :name => nil, :description => "bar" } }
+      end
+      it "should save the upload image" do
+        @image = mock(Image).as_null_object
+      end
+
+      it "should be able to save an upload with a unique id" do
+        uploaded_file = mock(ActionController::UploadedStringIO).as_null_object
+        uploaded_file.stub!(:original_filename).and_return('test.jpg')
+        uploaded_file.stub!(:read).and_return("Some content")
+
+        @image = Image.new
+
+        @image.save
+      end 
     end
   end
 end

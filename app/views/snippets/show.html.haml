@@ -4,13 +4,23 @@
     %h2= @snippet.to_s
     %textarea.code-container{ :readonly => "readonly" }
       = @snippet.description
+
+    %h3 Images
     - @images.each do |image|
       = image_tag image.image_file.url
       = link_to 'Delete', { :action => 'destroy_image', :image_id => image.id }, :confirm => 'Are you sure?', :method => :delete
+
+    %h3 Code Blocks
+    - @snippet.code_blocks.each do |code_block|
+      .code-block
+        %em= code_block.to_s
+        %br
+        ~ code_block.code_html
+        = link_to "Edit", edit_code_block_path(code_block.id)
+        = link_to "Delete", code_block_path(code_block.id), :confirm => "Are you sure?", :method => :delete
+    = link_to 'Create New Code Block', new_code_block_path(:snippet_id => @snippet.id)
   .edit-container
     %h2
-      = link_to image_tag("edit.png", :border=>0), { :action => 'edit', :id => @snippet }
-      = link_to image_tag("delete.png", :border=>0), { :action => 'destroy', :id => @snippet }, :confirm => 'Are you sure?', :method => :delete
-
-
+      = link_to image_tag("edit.png", :border => 0), { :action => 'edit', :id => @snippet }
+      = link_to image_tag("delete.png", :border => 0), { :action => 'destroy', :id => @snippet }, :confirm => 'Are you sure?', :method => :delete
 .clear  

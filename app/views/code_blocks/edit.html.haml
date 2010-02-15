@@ -1,0 +1,15 @@
+%h2 Code Block
+
+.form-container
+  - form_for :code_block, @code_block, :url => code_block_path(@code_block), :html => { :method => :put }  do |form|
+    .main-container
+      %label{ :for => 'title'}
+        Title
+      = form.text_field :title
+      %label{ :for => 'code'}
+        Code
+      = form.text_area :code, :class => 'code_block-box'
+      %label{ :for => 'code-type'}
+        Code Type
+      = form.select :code_type, options_for_select(@code_types, @code_block.code_type), { :include_blank => true }
+      = submit_tag "Update"

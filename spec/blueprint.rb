@@ -10,3 +10,9 @@ end
 blueprint :subcategory do
   Subcategory.create!(:name => "this is a subcategory")
 end
+blueprint :user do
+  User.create!(:login => "name", :password => "password", :password_confirmation => "password", :email => "name@address.com")
+end
+blueprint :user_session do
+  UserSession.create!(:email => "somename@gmail.com", :password => "foobar")
+end

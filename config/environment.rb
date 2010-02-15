@@ -19,6 +19,8 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   config.gem "authlogic"
+  config.gem "factory_girl", :source => "http://gemcutter.org"
+  config.gem "giraffesoft-resource_controller", :lib => "resource_controller", :source => "git://github.com/giraffesoft/resource_controller.git"
   config.gem "will_paginate"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "haml"

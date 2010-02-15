@@ -6,3 +6,10 @@ blueprint :image do
 end
 blueprint :category do
   Category.create!(:name => "this is a category")
+end
+blueprint :subcategory do
+  Subcategory.create!(:name => "this is a subcategory")
+end
+blueprint :user do
+  User.create!(:login => "name", :password => "password", :password_confirmation => "password", :email => "name@address.com")
+end
